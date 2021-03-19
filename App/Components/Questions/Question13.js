@@ -2,13 +2,11 @@ import { StatusBar } from 'expo-status-bar';
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, SafeAreaView, Image, ImageBackground, TouchableOpacity, ScrollView, TextInput, FlatList, Alert } from 'react-native';
 import { responsiveWidth, responsiveHeight, responsiveFontSize } from 'react-native-responsive-dimensions';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
-import FontAwesome from 'react-native-vector-icons/FontAwesome'
-import Ionicons from 'react-native-vector-icons/Ionicons'
-import AntDesign from 'react-native-vector-icons/AntDesign';
-import Entypo from 'react-native-vector-icons/Entypo';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Header, Avatar, colors } from 'react-native-elements';
+import Constants from 'expo-constants';
+import { Entypo,MaterialCommunityIcons } from '@expo/vector-icons';
+
 export default class Question13 extends Component {
 
     state = {
@@ -53,6 +51,39 @@ export default class Question13 extends Component {
             <View
                 style={styles.container}>
                 <StatusBar backgroundColor="white" barStyle="light-content" translucent />
+                <Header
+              backgroundColor={'white'}
+              leftComponent={
+                <TouchableOpacity style={{
+                  alignContent: 'flex-start',
+                  justifyContent: 'flex-start',
+                  alignItems: 'flex-start'
+                }}
+                onPress={() => {
+                  this.props.navigation.goBack();
+              }}
+                >
+                  <Entypo name="arrow-long-left" size={40} color="black" />
+                </TouchableOpacity>
+              }
+             
+              rightComponent={
+                <TouchableOpacity style={{
+                  alignContent: 'flex-start',
+                  justifyContent: 'flex-start',
+                  alignItems: 'flex-start'
+                }}
+                onPress={() => {
+                  this.props.navigation.navigate("Home");
+              }}
+                >
+                  <MaterialCommunityIcons name="home-assistant" size={40} color="black" />
+                </TouchableOpacity>
+              }
+              statusBarProps={{ barStyle: 'light-content', translucent: true, backgroundColor: '#757575' }}
+              containerStyle={{ borderBottomColor: '#85106a', borderBottomWidth: 0, color: 'red' }}
+              style={{ backgroundColor: 'red', elevation: 5 }}
+            />
 
                 <View style={styles.textbuttonView}>
                     <Text style={styles.textbutton}>Have you tried other weight loss programs before?</Text>
@@ -70,7 +101,7 @@ export default class Question13 extends Component {
                             style={[styles.button, { marginLeft: 20 }]}
                             onPress={()=>this.onPress("Weight watchers")}
                         >
-                            <Text style={styles.textbutton1}> Weight watchers</Text>
+                            <Text style={styles.textbutton1}> Weight Watchers</Text>
                         </TouchableOpacity>
                     </View>
 
@@ -79,7 +110,7 @@ export default class Question13 extends Component {
                             style={styles.button}
                             onPress={()=>this.onPress("Jenny craig")}
                         >
-                            <Text style={styles.textbutton1}> Jenny craig</Text>
+                            <Text style={styles.textbutton1}> Jenny Craig</Text>
                         </TouchableOpacity>
                         <TouchableOpacity
                             style={[styles.button, { marginLeft: 20 }]}
@@ -94,7 +125,7 @@ export default class Question13 extends Component {
                             style={styles.button}
                             onPress={()=>this.onPress("Local clinic")}
                         >
-                            <Text style={styles.textbutton1}> Local clinic </Text>
+                            <Text style={styles.textbutton1}> Local Clinic </Text>
                         </TouchableOpacity>
                         <TouchableOpacity
                             style={[styles.button, { marginLeft: 20 }]}
@@ -136,7 +167,7 @@ const styles = StyleSheet.create({
 
     },
     textbuttonView: {
-        marginVertical: 70,
+        marginVertical: 20,
         // justifyContent: 'center',
         // alignContent: 'center',
         // alignItems: 'center',
@@ -179,8 +210,8 @@ const styles = StyleSheet.create({
 
     buttonView: {
         flex: 1,
-        alignSelf:'center'
-
+        alignSelf:'center',
+marginVertical:50
     },
     buttonView1: {
         flexDirection: 'row',

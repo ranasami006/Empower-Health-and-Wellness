@@ -156,15 +156,15 @@ export default class Aboutus extends Component {
 
                     <View style={styles.description}>
 
-                        <Text style={{ marginHorizontal: 40, marginVertical: -20, fontWeight: 'bold' }}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                        when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-                                It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</Text>
+                        <Text style={{ marginHorizontal: 40, marginVertical: -20, fontWeight: 'bold' }}>Patients to take their health and vitality into their own hands. We empower
+                        ongoing discussions and conversations about your health with top tier
+                        doctors and providers. We take away traditional impediments and empower
+a true doctor patient relationship for modern times.</Text>
 
 
                     </View>
 
-                    <View style={{marginVertical:40}}>
+                    <View style={{ marginVertical: 40 }}>
                         <Image
                             source={require('../../Assets/others/about-boypic.png')}
                             style={styles.logoUser}>
@@ -173,15 +173,12 @@ export default class Aboutus extends Component {
                             <Image
                                 source={require('../../Assets/Logo/Assessment.png')}
                                 style={styles.logoTeam}></Image>
-                            <Text style={{ textAlign: 'center', color: '#9FCF3C', fontSize: 25, alignSelf: 'center', marginLeft: 5, fontWeight: "bold" }}>WE EMPOWER </Text>
+                            <Text style={{ textAlign: 'center', color: '#9FCF3C', fontSize: 25, alignSelf: 'center', marginLeft: 5, fontWeight: "bold" }}>Our Values </Text>
                         </View>
 
                         <View style={styles.description}>
 
-                            <Text style={{ marginHorizontal: 40, marginVertical: -20, fontWeight: 'bold' }}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                            when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-                                It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</Text>
+                            <Text style={{ marginHorizontal: 40, marginVertical: -20, fontWeight: 'bold' }}>We value a healthy life, a simpler life, a joyful life. We value being able to truly make our patients lives healthier and simpler. We value the small steps and big achievements in your health and your life. Our values are rooted in the hippocratic oath and the lost art of a traditional doctor patient relationship.</Text>
 
 
                         </View>
@@ -198,7 +195,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
     },
     topView: {
-        flexDirection:'row',
+        flexDirection: 'row',
         backgroundColor: '#142F60',
         height: responsiveHeight(17),
         borderRadius: responsiveWidth(3),
@@ -207,7 +204,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         marginLeft: responsiveWidth(3),
         borderRadius: responsiveWidth(2),
-        alignItems:'center'
+        alignItems: 'center'
     },
     logo: {
         width: responsiveWidth(60),
@@ -215,11 +212,11 @@ const styles = StyleSheet.create({
         resizeMode: 'contain',
         marginLeft: responsiveWidth(10),
         marginTop: responsiveWidth(7),
-        padding:responsiveWidth(4),
+        padding: responsiveWidth(4),
 
     },
     icon: {
-      //  marginTop: responsiveWidth(10),
+        //  marginTop: responsiveWidth(10),
     },
     logoTeam: {
         width: responsiveWidth(12),
@@ -232,7 +229,7 @@ const styles = StyleSheet.create({
         width: '100%',
         borderRadius: responsiveWidth(1),
     },
-   
+
     iconBack: {
         padding: 13,
     },

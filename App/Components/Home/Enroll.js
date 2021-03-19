@@ -13,6 +13,7 @@ import {
     TextInput,
     FlatList,
     AsyncStorage,
+    Linking
 } from 'react-native';
 import {
     responsiveWidth,
@@ -86,8 +87,14 @@ export default class Enroll extends Component {
         // // });
     }
 
-    onPress = () => {
-        this.props.navigation.navigate("QEnd1")
+    onPress1 = () => {
+        Linking.openURL('https://empoweryourhealth.hint.com/signup/the-1-year-metabolic-reset');
+    };
+    onPress2 = () => {
+        Linking.openURL('https://empoweryourhealth.hint.com/signup/the-monthly-metabolic-reset-weight-loss');
+    };
+    onPress3 = () => {
+        Linking.openURL('https://empoweryourhealth.hint.com/checkout/metabolicassessment');
     };
     render() {
         return (
@@ -123,16 +130,16 @@ export default class Enroll extends Component {
                         <View style={styles.buttonView1}>
                             <TouchableOpacity
                                 style={styles.button}
-                                onPress={this.onPress}
+                                onPress={this.onPress1}
                             >
-                                <Text style={{ color: 'white',fontSize:40,textAlign:'center' }}>1 Year Plan</Text>
+                                <Text style={{ color: 'white',fontSize:40,textAlign:'center',fontWeight:'bold' }}>1 Year Plan</Text>
                             </TouchableOpacity>
                             <TouchableOpacity
                                 style={[styles.button, { marginLeft: 20 }]}
-                                onPress={this.onPress}
+                                onPress={this.onPress2}
                             >
                                 
-                                <Text style={{ color: 'white',fontSize:36,textAlign:'center', }}> Monthly Plan </Text>
+                                <Text style={{ color: 'white',fontSize:34,textAlign:'center',fontWeight:'bold'}}> Monthly Plan </Text>
                             </TouchableOpacity>
 
                         </View>
@@ -140,10 +147,10 @@ export default class Enroll extends Component {
                         <View style={styles.buttonView1}>
                             <TouchableOpacity
                                 style={styles.button}
-                                onPress={this.onPress}
+                                onPress={this.onPress3}
                             >
                               
-                                <Text style={{ color: 'white',fontSize:25,textAlign:'center', }}> MetaBolic Assessment Only</Text>
+                                <Text style={{ color: 'white',fontSize:25,textAlign:'center',fontWeight:'bold' }}> MetaBolic Assessment Only</Text>
                             </TouchableOpacity>
 
 
@@ -204,7 +211,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         padding: 10,
         borderRadius: 7,
-        width: 160,
+        width: 170,
         height: 160,
         //borderWidth: 1,
         fontSize: 20,

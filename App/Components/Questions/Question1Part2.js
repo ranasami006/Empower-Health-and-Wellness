@@ -2,19 +2,16 @@ import { StatusBar } from 'expo-status-bar';
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, SafeAreaView, Image, ImageBackground, TouchableOpacity, ScrollView, TextInput, FlatList, Alert } from 'react-native';
 import { responsiveWidth, responsiveHeight, responsiveFontSize } from 'react-native-responsive-dimensions';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
-import FontAwesome from 'react-native-vector-icons/FontAwesome'
-import Ionicons from 'react-native-vector-icons/Ionicons'
-import AntDesign from 'react-native-vector-icons/AntDesign';
-import Entypo from 'react-native-vector-icons/Entypo';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Header, Avatar, colors } from 'react-native-elements';
+import Constants from 'expo-constants';
+import { Entypo,MaterialCommunityIcons } from '@expo/vector-icons';
 export default class Question1Part2 extends Component {
 
     state = {
-        feet:0,
-        inches:0,
-        pounds:0,
+        feet:"",
+        inches:"",
+        pounds:"",
         ErrorMessege:''
     };
     onChangeTextFeet = (text) => {
@@ -76,11 +73,18 @@ export default class Question1Part2 extends Component {
     }
     async weightStorage(){
         try {
+          //  BMI = (weight (lb) ÷ height2 (in)) * 703
+         
+            let heightInches= (12*this.state.feet) + parseInt( this.state.inches ) 
+            let heightBMI=heightInches*heightInches
+            let BMI= (this.state.pounds/heightBMI)*703;
+           // console.log("BMIII ",BMI);
             await AsyncStorage.setItem('pounds', this.state.pounds)
             await AsyncStorage.setItem('feet', this.state.feet)
             await AsyncStorage.setItem('inches', this.state.inches)
-           // console.log("TETS ===",parseInt(value))
-           this.props.navigation.navigate("Question2")
+            await AsyncStorage.setItem('BMI', BMI.toString())
+            
+            this.props.navigation.navigate("Question2")
           } catch (e) {
             // saving error
           }
@@ -94,11 +98,47 @@ export default class Question1Part2 extends Component {
             <View
                 style={styles.container}>
                 <StatusBar backgroundColor="white" barStyle="light-content" translucent />
+                <View style={{ marginTop: 0, backgroundColor: 'grey' }}>
+            <Header
+              backgroundColor={'white'}
+              leftComponent={
+                <TouchableOpacity style={{
+                  alignContent: 'flex-start',
+                  justifyContent: 'flex-start',
+                  alignItems: 'flex-start'
+                }}
+                onPress={() => {
+                  this.props.navigation.goBack();
+              }}
+                >
+                  <Entypo name="arrow-long-left" size={40} color="black" />
+                </TouchableOpacity>
+              }
+             
+              rightComponent={
+                <TouchableOpacity style={{
+                  alignContent: 'flex-start',
+                  justifyContent: 'flex-start',
+                  alignItems: 'flex-start'
+                }}
+                onPress={() => {
+                  this.props.navigation.navigate("Home");
+              }}
+                >
+                  <MaterialCommunityIcons name="home-assistant" size={40} color="black" />
+                </TouchableOpacity>
+              }
+              statusBarProps={{ barStyle: 'light-content', translucent: true, backgroundColor: '#757575' }}
+              containerStyle={{ borderBottomColor: '#85106a', borderBottomWidth: 0, color: 'red' }}
+              style={{ backgroundColor: 'red', elevation: 5 }}
+            />
+          </View>
         <ScrollView>
                 <Image source={require('../../Assets/TextQuestion1part2.png')} style={styles.image}></Image>
                 <Text style={{textAlign:'center',color:'red',fontSize:15,}}>{this.state.ErrorMessege}</Text>
                 <View style={styles.buttonView}>
                    <TextInput
+                        editable
                         style={styles.button} 
                         keyboardType="numeric"
                         placeholder={'Feet'}
@@ -173,7 +213,7 @@ const styles = StyleSheet.create({
         borderColor: "#9fcf3c",
         fontSize:20,
         textAlign: 'center',
-
+       
     },
     textbutton: {
         //color:'white',
@@ -196,9 +236,9 @@ const styles = StyleSheet.create({
        
     },
     image: {
-        width: responsiveWidth(75),
+        width: responsiveWidth(79),
         height: responsiveHeight(15),
-        marginVertical: 50,
+      //  marginVertical: 50,
         alignSelf: 'center',
     },
     image1: {

@@ -8,13 +8,13 @@ export default function Splash() {
     const [status, setStatus] = React.useState({});
     return (
         <View style={styles.container}>
-            {/* <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                 <View style={styles.video1}>
                     <Video
                         ref={video}
                         style={styles.video}
                         source={
-                            require('../../Assets/Video/MuteVideo1597115283720.mp4')
+                            require('../../Assets/Videos/Splashvideo1.mp4')
                         }
                         useNativeControls
                         resizeMode="cover"
@@ -29,7 +29,8 @@ export default function Splash() {
                         ref={video}
                         style={styles.video}
                         source={
-                            require('../../Assets/Video/MuteVideo1597115283720.mp4')
+                            require('../../Assets/Videos/Splashvideo2.mp4')
+                       
                         }
                         useNativeControls
                         resizeMode="cover"
@@ -40,19 +41,20 @@ export default function Splash() {
                 </View>
             </View>
             <View style={styles.video2}>
-                <Video
-                    ref={video}
-                    style={[styles.video, { width: '100%'}]}
-                    source={
-                        require('../../Assets/Video/MuteVideo1597115283720.mp4')
-                    }
-                    useNativeControls
-                    resizeMode="cover"
-                    shouldPlay={true}
-                    isLooping
-                    onPlaybackStatusUpdate={status => setStatus(() => status)}
-                />
-            </View> */}
+            <Video
+                        ref={video}
+                        style={styles.video}
+                        source={
+                            require('../../Assets/Videos/splash3.mp4')
+                        }
+                        useNativeControls
+                        resizeMode="cover"
+                        shouldPlay={true}
+                        isLooping
+                        onPlaybackStatusUpdate={status => setStatus(() => status)}
+                    />
+            
+            </View>
         </View>
     );
 }
@@ -76,7 +78,7 @@ const styles = StyleSheet.create({
     video2: {
         width: windowWidth,
         height: windowHeight / 3.5,
-        backgroundColor: 'red',
+        //backgroundColor: 'red',
         top: 10,
     }
 });

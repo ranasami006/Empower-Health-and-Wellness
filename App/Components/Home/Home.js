@@ -25,7 +25,6 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Entypo from 'react-native-vector-icons/Entypo';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import { connectFirebase } from "../../Config/Config";
 export default class Home extends Component {
     state = {
         news: [
@@ -68,7 +67,6 @@ export default class Home extends Component {
     };
 
     async componentDidMount() {
-        connectFirebase()
         // let data = await AsyncStorage.getItem("Token");
         // if (data) 
         // {
@@ -140,7 +138,7 @@ export default class Home extends Component {
                                     style={styles.boxImage}>
 
                                 </Image>
-                                <Text style={{marginBottom:5,}}> Start Assessment</Text>
+                                <Text style={{marginBottom:15}}> Start Assessment</Text>
                             </TouchableOpacity>
 
                         </View>
@@ -263,7 +261,7 @@ const styles = StyleSheet.create({
     },
     boxImage: {
         width: responsiveWidth(70),
-        height: responsiveHeight(18),
+        height: responsiveHeight(16),
         resizeMode: 'contain',
         alignSelf: 'center',
         justifyContent: 'center',

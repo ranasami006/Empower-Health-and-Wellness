@@ -2,12 +2,9 @@ import { StatusBar } from 'expo-status-bar';
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, SafeAreaView, Image, ImageBackground, TouchableOpacity, ScrollView, TextInput, FlatList, Alert } from 'react-native';
 import { responsiveWidth, responsiveHeight, responsiveFontSize } from 'react-native-responsive-dimensions';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
-import FontAwesome from 'react-native-vector-icons/FontAwesome'
-import Ionicons from 'react-native-vector-icons/Ionicons'
-import AntDesign from 'react-native-vector-icons/AntDesign';
-import Entypo from 'react-native-vector-icons/Entypo';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
+import { Header, Avatar, colors } from 'react-native-elements';
+import Constants from 'expo-constants';
+import { Entypo,MaterialCommunityIcons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 export default class Question22 extends Component {
 
@@ -53,17 +50,50 @@ export default class Question22 extends Component {
             <View
                 style={styles.container}>
                 <StatusBar backgroundColor="white" barStyle="light-content" translucent />
+                <Header
+              backgroundColor={'white'}
+              leftComponent={
+                <TouchableOpacity style={{
+                  alignContent: 'flex-start',
+                  justifyContent: 'flex-start',
+                  alignItems: 'flex-start'
+                }}
+                onPress={() => {
+                  this.props.navigation.goBack();
+              }}
+                >
+                  <Entypo name="arrow-long-left" size={40} color="black" />
+                </TouchableOpacity>
+              }
+             
+              rightComponent={
+                <TouchableOpacity style={{
+                  alignContent: 'flex-start',
+                  justifyContent: 'flex-start',
+                  alignItems: 'flex-start'
+                }}
+                onPress={() => {
+                  this.props.navigation.navigate("Home");
+              }}
+                >
+                  <MaterialCommunityIcons name="home-assistant" size={40} color="black" />
+                </TouchableOpacity>
+              }
+              statusBarProps={{ barStyle: 'light-content', translucent: true, backgroundColor: '#757575' }}
+              containerStyle={{ borderBottomColor: '#85106a', borderBottomWidth: 0, color: 'red' }}
+              style={{ backgroundColor: 'red', elevation: 5 }}
+            />
             <View style={styles.textbuttonView}>
                 <Text style={styles.textbutton}>We customize the plan for you. What pace would you prefer? </Text>
              </View>
                
-              <View style={{marginVertical:-30,}}>
+              <View style={{marginVertical:30,}}>
                 <View style={[styles.buttonView1,{marginVertical: 30,}]}>
                     <TouchableOpacity
                         style={styles.button}
                         onPress={()=>this.onPress("3")}
                     >
-                        <Text style={styles.textbutton1}>As fast as posible</Text>
+                        <Text style={styles.textbutton1}>As fast as possible.</Text>
                     </TouchableOpacity>         
                 </View>
                 <View style={[styles.buttonView1,{marginVertical: 30,}]}>
@@ -71,7 +101,7 @@ export default class Question22 extends Component {
                         style={styles.button}
                         onPress={()=>this.onPress("2")} >
                         <Text style={styles.textbutton1}>
-                        Slow and steady wins the race
+                        Slow and steady wins the race.
                         </Text>
                     </TouchableOpacity>         
                 </View>
@@ -99,7 +129,7 @@ const styles = StyleSheet.create({
         padding: 10,
         borderRadius: 7,
         width: 200,
-        height: 60,
+        height: 80,
         fontSize:20,
         textAlign: 'center',
         backgroundColor: "#143060"
@@ -117,7 +147,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     textbuttonView:{
-    marginVertical:70, 
+    marginVertical:0, 
     justifyContent:'center',
     width:350,
     alignItems:'center',

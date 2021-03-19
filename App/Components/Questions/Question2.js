@@ -2,13 +2,11 @@ import { StatusBar } from 'expo-status-bar';
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, SafeAreaView, Image, ImageBackground, TouchableOpacity, ScrollView, TextInput, FlatList, Alert } from 'react-native';
 import { responsiveWidth, responsiveHeight, responsiveFontSize } from 'react-native-responsive-dimensions';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
-import FontAwesome from 'react-native-vector-icons/FontAwesome'
-import Ionicons from 'react-native-vector-icons/Ionicons'
-import AntDesign from 'react-native-vector-icons/AntDesign';
-import Entypo from 'react-native-vector-icons/Entypo';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
+
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Header, Avatar, colors } from 'react-native-elements';
+import Constants from 'expo-constants';
+import { Entypo,MaterialCommunityIcons } from '@expo/vector-icons';
 export default class Question2 extends Component {
 
     state = {
@@ -67,6 +65,39 @@ export default class Question2 extends Component {
             <View
                 style={styles.container}>
                 <StatusBar backgroundColor="white" barStyle="light-content" translucent />
+                <Header
+              backgroundColor={'white'}
+              leftComponent={
+                <TouchableOpacity style={{
+                  alignContent: 'flex-start',
+                  justifyContent: 'flex-start',
+                  alignItems: 'flex-start'
+                }}
+                onPress={() => {
+                  this.props.navigation.goBack();
+              }}
+                >
+                  <Entypo name="arrow-long-left" size={40} color="black" />
+                </TouchableOpacity>
+              }
+             
+              rightComponent={
+                <TouchableOpacity style={{
+                  alignContent: 'flex-start',
+                  justifyContent: 'flex-start',
+                  alignItems: 'flex-start'
+                }}
+                onPress={() => {
+                  this.props.navigation.navigate("Home");
+              }}
+                >
+                  <MaterialCommunityIcons name="home-assistant" size={40} color="black" />
+                </TouchableOpacity>
+              }
+              statusBarProps={{ barStyle: 'light-content', translucent: true, backgroundColor: '#757575' }}
+              containerStyle={{ borderBottomColor: '#85106a', borderBottomWidth: 0, color: 'red' }}
+              style={{ backgroundColor: 'red', elevation: 5 }}
+            />
         <ScrollView>
             <View style={styles.textbuttonView}>
                 <Text style={styles.textbutton}>What is your goal weight?</Text>
@@ -91,19 +122,18 @@ export default class Question2 extends Component {
                         style={[styles.button,{  backgroundColor: "#143060",width:130,height:60}]}
                         onPress={() => this.ValidationFn()}
                         >
-                        <Text style={[styles.textbutton,{color:'white'}]}>Next</Text>
+                        <Text style={[styles.textbutton,{color:'white',fontSize:20}]}>Next</Text>
                     </TouchableOpacity>
                    
                         
                 </View>
 
+              
+                </ScrollView>
                 <View style={styles.logo}>
                     <Image source={require('../../Assets/Logo/LogoBlue.png')} style={styles.image1}></Image>
 
-
                 </View>  
-                </ScrollView>
-                
             </View>
 
         );
@@ -131,11 +161,11 @@ const styles = StyleSheet.create({
     },
     textbutton: {
         color:'#9fcf3c',
-        fontSize: 25,
+        fontSize: responsiveFontSize(4),
         textAlign: 'center',
     },
     textbuttonView:{
-    marginVertical:100,    
+    marginVertical:60,    
     },
 
     buttonView: {
@@ -167,11 +197,12 @@ const styles = StyleSheet.create({
 
     logo: {
          alignSelf:'center',
-         marginTop:50,
+         //marginTop:50,
           //top:10,
-         bottom:-12,
+         bottom:0,
          //marginVertical:100,
-    }
+        position:'absolute',
+        } 
 });
 
 

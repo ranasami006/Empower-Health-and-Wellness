@@ -2,13 +2,9 @@
   "expo": {
     "name": "Empower-Health-and-Wellness",
     "slug": "Empower-Health-and-Wellness",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "splash": {
-      "image": "./assets/SplashScreen.png",
-      "resizeMode": "contain"
-    },
     "updates": {
       "fallbackToCacheTimeout": 0
     },
@@ -16,7 +12,8 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.ranasami06.EmpowerHealthandWellness"
     },
     "android": {
       "adaptiveIcon": {

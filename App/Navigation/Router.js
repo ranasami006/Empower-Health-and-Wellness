@@ -1,28 +1,13 @@
 
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-
+import 'react-native-gesture-handler';
+import React , { useState, useEffect } from 'react';
 import { Platform, Image, StyleSheet, Text, View, ScrollView, SafeAreaView, TouchableOpacity, ActivityIndicator } from 'react-native';
-
 import { responsiveHeight, responsiveWidth, responsiveFontSize } from 'react-native-responsive-dimensions';
-// import FontAwesome from 'react-native-vector-icons/FontAwesome'
-// import Ionicons from 'react-native-vector-icons/Ionicons'
-// import AntDesign from 'react-native-vector-icons/AntDesign';
-// import Entypo from 'react-native-vector-icons/Entypo';
-// import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
-// import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
-// import EvilIcons from 'react-native-vector-icons/EvilIcons'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-// import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList, DrawerItem } from '@react-navigation/drawer';
-// import AuthLoading from '../Components/AuthLoading/AuthLoading';
- import StartScreen from '../Components/Start/StartScreen'
-// import Register from '../Components/Register/Register'
-// import RegisterDocDetail from '../Components/Register/RegisterDocDetail'
-// import Terms from '../Components/Register/Terms'
-// import Login from '../Components/Login/Login'
-// import ForgotPassword from '../Components/Login/ForgotPassword'
+import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList, DrawerItem } from '@react-navigation/drawer'; 
+import StartScreen from '../Components/Start/StartScreen'
 import Question from '../Components/Questions/Question'
 import Question1 from '../Components/Questions/Question1'
 import Question2 from '../Components/Questions/Question2'
@@ -56,6 +41,8 @@ import Question1Part2 from '../Components/Questions/Question1Part2'
 
 import Graphics from '../Components/Graphics/Graphics'
 
+import GraphicWeight from '../Components/Graphics/GraphicWeight'
+
 import Graphics2 from '../Components/Graphics/Graphics2'
 import CelebrationGraphics from '../Components/Graphics/CelebrationGraphics'
 
@@ -68,7 +55,12 @@ import Enroll from '../Components/Home/Enroll'
 import Ourteam from '../Components/Home/Ourteam'
 import Aboutus from '../Components/Home/Aboutus'
 import  Splash  from "../Components/Splash/Splash";
+import  centerSplash  from "../Components/Splash/centerSplash";
 
+import { preventAutoHideAsync, hideAsync } from 'expo-splash-screen';
+import { Asset } from 'expo-asset';
+import  AppLoading  from 'expo-app-loading';
+hideAsync().catch(console.warn);
 console.disableYellowBox = true
 const Drawer = createDrawerNavigator();
 const MainStack = createStackNavigator();
@@ -78,12 +70,14 @@ const OverViewStack = createStackNavigator();
 const Main = () => {
     return (
 
-        <MainStack.Navigator initialRouteName="Home" screenOptions={{ headerShown: false, gestureEnabled: false, animationEnabled:false }} >
+        <MainStack.Navigator initialRouteName="Home" 
+        screenOptions={{ headerShown: false, gestureEnabled: true, animationEnabled:true,}} >
             <MainStack.Screen name="Home" component={Home} />
             <MainStack.Screen name="Ourteam" component={Ourteam} />
             <MainStack.Screen name="Enroll" component={Enroll} />
             <MainStack.Screen name="Aboutus" component={Aboutus} />
             <MainStack.Screen name="Splash" component={Splash} />
+            <MainStack.Screen name="centerSplash" component={centerSplash} />
 
             <MainStack.Screen name="StartScreen" component={StartScreen} />
             <MainStack.Screen name="Question" component={Question} />
@@ -111,8 +105,10 @@ const Main = () => {
             <MainStack.Screen name="Question21" component={Question21} />
             <MainStack.Screen name="Question22" component={Question22} />
             <MainStack.Screen name="Question23" component={Question23} />
-          
+
             <MainStack.Screen name="Graphics" component={Graphics} />
+            <MainStack.Screen name="GraphicWeight" component={GraphicWeight} />
+            
             <MainStack.Screen name="Graphics2" component={Graphics2} />
             <MainStack.Screen name="CelebrationGraphics" component={CelebrationGraphics} />
             <MainStack.Screen name="QEnd1" component={QEnd1} />
@@ -140,9 +136,6 @@ const view = () => {
 
         <OverViewStack.Navigator initialRouteName="Home" screenOptions={{ headerShown: false, gestureEnabled: false }} >
             <OverViewStack.Screen name="Home1" component={Home1} />
-            {/* <OverViewStack.Screen name="Services" component={Services} />
-            <OverViewStack.Screen name="News" component={News} />
-            <OverViewStack.Screen name="serviceCardDetail" component={serviceCardDetail} /> */}
           </OverViewStack.Navigator>
     );
 
@@ -212,12 +205,32 @@ const card = () => {
 //     );
 // }
 
-export default App = () => {
 
+//SplashScreen.hideAsync();
+  export default App = () => {
+    const [isLoadingSplash, setIsLoadingSplash] = useState(true);
+    const init = (): void => {
+      setTimeout(async () => {
+        hideAsync().catch(console.warn);
+        setIsLoadingSplash(false);
+      }, 5000);
+    };
+  
+    useEffect(() => {
+      init();
+    }, []);
+  
+    
+   
+  
     return (
+        <>
+      {isLoadingSplash && <Splash />}
+      {!isLoadingSplash && (
         <NavigationContainer>
             {/* <Main /> */}
             <Drawer.Navigator initialRouteName="Main"
+                screenOptions={{ headerShown: false, gestureEnabled: true, animationEnabled:false,gestureResponseDistance: {horizontal: 20} }} 
                 edgeWidth={0}
                 drawerContent={props => <CustomDrawer {...props} />}
                 statusBarAnimation={'slide'}
@@ -228,15 +241,16 @@ export default App = () => {
                     borderTopRightRadius: 5,
                 }}>
                 
-                <Drawer.Screen name="Main" component={Main} />
+                <Drawer.Screen name="Main" component={Main} 
+                screenOptions={{ headerShown: false, gestureEnabled: true, animationEnabled:false }} 
+                />
             </Drawer.Navigator>
         </NavigationContainer>
-
+        )}
+      </>
        
     );
 }
-
-
 
 
 const styles = StyleSheet.create({
@@ -247,3 +261,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+

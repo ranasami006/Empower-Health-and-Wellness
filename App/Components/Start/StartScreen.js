@@ -29,7 +29,7 @@ export default class StartScreen extends Component {
                     barStyle="light-content" translucent />
 
                 <View style={styles.textContainer}>
-                    <Text style={styles.text}>"Get{"  "}Started{"  "}Now" </Text>
+                    <Text style={styles.text}>Get{" "}Started{" "}Now </Text>
                 </View>
                 <TouchableOpacity
                  onPress={()=>this.props.navigation.navigate('Question')}
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     },
     text:
     {
-        fontSize: responsiveFontSize(3),
+        fontSize: responsiveFontSize(4.5),
         alignSelf: 'center',
         fontWeight: 'bold',
         color: 'white',

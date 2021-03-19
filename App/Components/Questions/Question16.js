@@ -2,12 +2,10 @@ import { StatusBar } from 'expo-status-bar';
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, SafeAreaView, Image, ImageBackground, TouchableOpacity, ScrollView, TextInput, FlatList, Alert } from 'react-native';
 import { responsiveWidth, responsiveHeight, responsiveFontSize } from 'react-native-responsive-dimensions';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
-import FontAwesome from 'react-native-vector-icons/FontAwesome'
-import Ionicons from 'react-native-vector-icons/Ionicons'
-import AntDesign from 'react-native-vector-icons/AntDesign';
-import Entypo from 'react-native-vector-icons/Entypo';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
+import { Header, Avatar, colors } from 'react-native-elements';
+import Constants from 'expo-constants';
+import { Entypo,MaterialCommunityIcons } from '@expo/vector-icons';
+
 import AsyncStorage from '@react-native-async-storage/async-storage';
 export default class Question16 extends Component {
 
@@ -55,31 +53,64 @@ export default class Question16 extends Component {
             <View
                 style={styles.container}>
                 <StatusBar backgroundColor="white" barStyle="light-content" translucent />
+                <Header
+              backgroundColor={'white'}
+              leftComponent={
+                <TouchableOpacity style={{
+                  alignContent: 'flex-start',
+                  justifyContent: 'flex-start',
+                  alignItems: 'flex-start'
+                }}
+                onPress={() => {
+                  this.props.navigation.goBack();
+              }}
+                >
+                  <Entypo name="arrow-long-left" size={40} color="black" />
+                </TouchableOpacity>
+              }
+             
+              rightComponent={
+                <TouchableOpacity style={{
+                  alignContent: 'flex-start',
+                  justifyContent: 'flex-start',
+                  alignItems: 'flex-start'
+                }}
+                onPress={() => {
+                  this.props.navigation.navigate("Home");
+              }}
+                >
+                  <MaterialCommunityIcons name="home-assistant" size={40} color="black" />
+                </TouchableOpacity>
+              }
+              statusBarProps={{ barStyle: 'light-content', translucent: true, backgroundColor: '#757575' }}
+              containerStyle={{ borderBottomColor: '#85106a', borderBottomWidth: 0, color: 'red' }}
+              style={{ backgroundColor: 'red', elevation: 5 }}
+            />
             <View style={styles.textbuttonView}>
-                <Text style={styles.textbutton}>Emotions play a big role in your body. which statment best describes how has you motivation to loose weight change over time? </Text>
+                <Text style={styles.textbutton}>Emotions play a big role in your body. Which statement best describes how your motivation to lose weight has changed over time? </Text>
              </View>
                
-              <View style={{marginVertical:-30,}}>
+              <View style={{marginVertical:30,}}>
                 <View style={[styles.buttonView1,{marginVertical: 10,}]}>
                     <TouchableOpacity
                         style={styles.button}
                         onPress={()=>this.onPress("2")}
                     >
-                        <Text style={styles.textbutton1}>I preety consistant.</Text>
+                        <Text style={styles.textbutton1}>I am pretty consistent.</Text>
                     </TouchableOpacity>         
                 </View>
                 <View style={[styles.buttonView1,{marginVertical: 10,}]}>
                     <TouchableOpacity
                         style={styles.button}
                         onPress={()=>this.onPress("1")} >
-                        <Text style={styles.textbutton1}>Its on and off</Text>
+                        <Text style={styles.textbutton1}>It’s on and off.</Text>
                     </TouchableOpacity>         
                 </View>
                  <View style={[styles.buttonView1,{marginVertical: 10,}]}>
                     <TouchableOpacity
                         style={styles.button}
                         onPress={()=>this.onPress("0")} >
-                        <Text style={styles.textbutton1}>Still looking for it</Text>
+                        <Text style={styles.textbutton1}>Still looking for it.</Text>
                     </TouchableOpacity>         
                 </View>
                 
@@ -105,7 +136,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         padding: 10,
         borderRadius: 7,
-        width: 200,
+        width: 210,
         height: 60,
         fontSize:20,
         textAlign: 'center',
@@ -124,7 +155,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     textbuttonView:{
-    marginVertical:70, 
+    marginVertical:20, 
     justifyContent:'center',
     width:370,
     alignItems:'center',

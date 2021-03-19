@@ -8,7 +8,6 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Entypo from 'react-native-vector-icons/Entypo';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
-
 export default class Question extends Component {
 
     state = {
@@ -43,31 +42,39 @@ export default class Question extends Component {
     render() {
         return (
             <TouchableOpacity
-             onPress={()=>this.props.navigation.navigate("Question1")}
-             style={styles.container}>
+                onPress={() => this.props.navigation.navigate("Question1")}
+                style={styles.container}>
                 <StatusBar backgroundColor="white" barStyle="light-content" translucent />
-                <Image source={require('../../Assets/TextMainScreen.png')} style={styles.image}></Image>
                 
-                 <Image source={require('../../Assets/Logo/LogoBlue.png')} style={styles.image1}></Image>
-                
+                <View style={styles.textbuttonView}>
+                    <Text style={styles.textbutton}>In  Order  For  Us  To  Help  You  Change  Your {"\n"}<Text style={{ color:"#143060",textAlign: 'center', fontWeight:'bold'}}> Mojo </Text>{"\n"}We Need To Get To Know You a Little Better   </Text>
+                </View>
+
+                <Image source={require('../../Assets/Logo/LogoBlue.png')}
+                    style={styles.image1}></Image>
+
             </TouchableOpacity>
 
         );
     }
 }
 const styles = StyleSheet.create({
+    textbuttonView: {
+        width: "90%",
+        marginTop: responsiveHeight(25),
+        alignSelf: 'center'
+    },
+    textbutton: {
+        color: '#9fcf3c',
+        fontSize: responsiveFontSize(4),
+        textAlign:'center',
+        lineHeight: 60,
+    },
     container: {
         flex: 1,
         backgroundColor: 'white',
-        justifyContent: "center",
-        alignContent: 'center',
     },
-    container2: {
-        flex: 1,
-        // backgroundColor: 'white',
-        // justifyContent: "center",
-        // alignContent: 'center',
-    },
+
     image: {
         width: responsiveWidth(75),
         height: responsiveHeight(40),
@@ -75,9 +82,11 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
     },
     image1: {
-         width: responsiveWidth(80),
-         height: responsiveHeight(15),
+        width: responsiveWidth(80),
+        height: responsiveHeight(15),
         alignSelf: 'center',
+        position: 'absolute',
+        bottom: 5
     },
     topView:
     {

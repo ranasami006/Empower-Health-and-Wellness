@@ -8,7 +8,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Entypo from 'react-native-vector-icons/Entypo';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 export default class QEnd1 extends Component {
 
     state = {
@@ -35,7 +35,57 @@ export default class QEnd1 extends Component {
 
 
     async componentDidMount() {
+        let BMI = await AsyncStorage.getItem('BMI')
+        let pounds = await AsyncStorage.getItem('pounds')
+        let feet = await AsyncStorage.getItem('feet')
+        let inches = await AsyncStorage.getItem('inches')
+        let goalWeight = await AsyncStorage.getItem('goalWeight')
+        let gender = await AsyncStorage.getItem('gender')
+        let genderVal = await AsyncStorage.getItem('genderVal')
+        let age = await AsyncStorage.getItem('age')
+        let name = await AsyncStorage.getItem('name')
+        let Question23 = await AsyncStorage.getItem('Question23')
+        let Question22 = await AsyncStorage.getItem('Question22')
+        let Question21 = await AsyncStorage.getItem('Question21')
+        let Question20 = await AsyncStorage.getItem('Question20')
+        let Question19 = await AsyncStorage.getItem('Question19')
+        let Question18 = await AsyncStorage.getItem('Question18')
+        let Question17 = await AsyncStorage.getItem('Question17')
+        let Question16 = await AsyncStorage.getItem('Question16')
+        let points = await AsyncStorage.getItem('points')
 
+        let pointsFinal=parseInt(points) + parseInt(Question16) + parseInt(Question17)
+        + parseInt(Question18)  + parseInt(Question19) + parseInt(Question20)
+         + parseInt(Question19)
+        + parseInt(Question21) + parseInt(Question22) + parseInt(Question23) 
+     
+        if(pointsFinal>=23 &&pointsFinal<=30){
+            pointsFinal=pointsFinal+5
+        }
+        else if(pointsFinal>=31 &&pointsFinal<=35){
+            pointsFinal=pointsFinal+4
+        }
+        else if(pointsFinal>=36 &&pointsFinal<=40){
+            pointsFinal=pointsFinal+3
+        }
+        else if(pointsFinal>=41 &&pointsFinal<=45){
+            pointsFinal=pointsFinal+1
+        }
+        else {
+            pointsFinal=pointsFinal+0
+        }
+
+        pointsFinal=pointsFinal+ parseInt(BMI)
+       
+       if(pointsFinal>=1 && pointsFinal<=25){
+            2*(parseInt(pounds)- parseInt(goalWeight) )
+       }    
+       else if(pointsFinal>=25 && pointsFinal<=52){
+        (parseInt(pounds)- parseInt(goalWeight) ) / 0.75
+    } 
+    else if(pointsFinal>=52 && pointsFinal<=77){
+        (parseInt(pounds)/parseInt(goalWeight) ) / 0.9
+    } 
     }
     onPress = () => {
         this.props.navigation.navigate("QEnd2")
@@ -78,7 +128,7 @@ const styles = StyleSheet.create({
        
     },
     textbuttonView:{
-   justifyContent:'center',
+    justifyContent:'center',
     width:350,
     alignItems:'center',
     alignSelf:'center',  

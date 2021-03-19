@@ -155,10 +155,14 @@ export default class Ourteam extends Component {
                     </View>         
                     <View style={styles.description}>
                                 
-                                <Text style={{marginHorizontal:20,marginVertical:10,fontWeight:'bold',alignSelf:"baseline"}}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                                when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
-                                It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</Text>
+                                <Text style={{marginHorizontal:20,marginVertical:-19,fontWeight:'bold',alignSelf:"baseline"}}>As a founding member of Empower Health and Wellness, Dr. Todd Gaddis brings a wide range of knowledge to the virtual platform. Dr. Gaddis is a graduate of Saint Christopher’s College of Medicine and completed his residency at Baton Rouge General family medicine residency program LSU and has been practicing for over 15 years.
+
+In his 15 years of practice, Dr. Gaddis has accumulated vast experience of active practice in family medicine, hospital medicine, emergency medicine, intensive care medicine, rehab, and rapid detox, urgent care, weight loss, and surgical cosmetic medicine. He even pioneered a telehealth platform that was way before its time.
+
+When the opportunity came to help form a strictly Telehealth practice that focuses on general wellness and vitality, he did not pass up the opportunity.
+
+Dr. Gaddis has always safely pushed the envelope and envisions telehealth as the future. With Empower Health and Wellness, Dr. Gaddis has created the first virtual-individualized Wellness Program with the purpose of restoring balance and vitality by offering direct primary care in combination with anti-aging medicine and virtual health coaching.
+</Text>
                             
 
                     </View>         

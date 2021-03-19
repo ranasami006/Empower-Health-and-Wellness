@@ -2,13 +2,11 @@ import { StatusBar } from 'expo-status-bar';
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, SafeAreaView, Image, ImageBackground, TouchableOpacity, ScrollView, TextInput, FlatList, Alert } from 'react-native';
 import { responsiveWidth, responsiveHeight, responsiveFontSize } from 'react-native-responsive-dimensions';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
-import FontAwesome from 'react-native-vector-icons/FontAwesome'
-import Ionicons from 'react-native-vector-icons/Ionicons'
-import AntDesign from 'react-native-vector-icons/AntDesign';
-import Entypo from 'react-native-vector-icons/Entypo';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
+
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Header, Avatar, colors } from 'react-native-elements';
+import Constants from 'expo-constants';
+import { Entypo,MaterialCommunityIcons } from '@expo/vector-icons';
 export default class Question6 extends Component {
 
     state = {
@@ -53,17 +51,50 @@ export default class Question6 extends Component {
             <View
                 style={styles.container}>
                 <StatusBar backgroundColor="white" barStyle="light-content" translucent />
+                <Header
+              backgroundColor={'white'}
+              leftComponent={
+                <TouchableOpacity style={{
+                  alignContent: 'flex-start',
+                  justifyContent: 'flex-start',
+                  alignItems: 'flex-start'
+                }}
+                onPress={() => {
+                  this.props.navigation.goBack();
+              }}
+                >
+                  <Entypo name="arrow-long-left" size={40} color="black" />
+                </TouchableOpacity>
+              }
+             
+              rightComponent={
+                <TouchableOpacity style={{
+                  alignContent: 'flex-start',
+                  justifyContent: 'flex-start',
+                  alignItems: 'flex-start'
+                }}
+                onPress={() => {
+                  this.props.navigation.navigate("Home");
+              }}
+                >
+                  <MaterialCommunityIcons name="home-assistant" size={40} color="black" />
+                </TouchableOpacity>
+              }
+              statusBarProps={{ barStyle: 'light-content', translucent: true, backgroundColor: '#757575' }}
+              containerStyle={{ borderBottomColor: '#85106a', borderBottomWidth: 0, color: 'red' }}
+              style={{ backgroundColor: 'red', elevation: 5 }}
+            />
             <View style={styles.textbuttonView}>
                 <Text style={styles.textbutton}>Everyone starts somewhere, which best describes your lifestyle? </Text>
              </View>
                
-              <View style={{flex:0,flexDirection:'column',marginVertical:-70,}}>
+              <View style={{flex:0,flexDirection:'column',marginVertical:0,}}>
                 <View style={[styles.buttonView1,{marginVertical: 10,}]}>
                     <TouchableOpacity
                         style={styles.button}
                         onPress={()=>this.onPress("0")}
                         >
-                        <Text style={styles.textbutton1}>My activity level and diet are pretty bad</Text>
+                        <Text style={styles.textbutton1}>My activity level and diet are pretty bad.</Text>
                     </TouchableOpacity>         
                 </View>
                 <View style={[styles.buttonView1,{marginVertical: 10,}]}>
@@ -71,7 +102,7 @@ export default class Question6 extends Component {
                         style={styles.button}
                         onPress={()=>this.onPress("1")}
                         >
-                        <Text style={styles.textbutton1}>Sometimes i am healthy, but i feel my weight and activity level are not same </Text>
+                        <Text style={styles.textbutton1}>Sometimes i am healthy, but i feel my weight and activity level are not same.</Text>
                     </TouchableOpacity>         
                 </View>
                  <View style={[styles.buttonView1,{marginVertical: 10,}]}>
@@ -79,7 +110,7 @@ export default class Question6 extends Component {
                         style={styles.button}
                         onPress={()=>this.onPress("2")}
                         >
-                        <Text style={styles.textbutton1}>I mostly eat well and stay active</Text>
+                        <Text style={styles.textbutton1}>I mostly eat well and stay active.</Text>
                     </TouchableOpacity>         
                 </View>
                 <View style={[styles.buttonView1,{marginVertical: 10,}]}>
@@ -87,7 +118,7 @@ export default class Question6 extends Component {
                         style={styles.button}
                         onPress={()=>this.onPress("3")}
                         >
-                        <Text style={styles.textbutton1}>I am a health freak, but need a little more help </Text>
+                        <Text style={styles.textbutton1}>I am a health freak, but need a little more help.</Text>
                     </TouchableOpacity>         
                 </View>
                 
@@ -134,7 +165,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     textbuttonView:{
-    marginVertical:70, 
+    marginVertical:20, 
     justifyContent:'center',
     width:350,
     alignItems:'center',

@@ -2,13 +2,10 @@ import { StatusBar } from 'expo-status-bar';
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, SafeAreaView, Image, ImageBackground, TouchableOpacity, ScrollView, TextInput, FlatList, Alert } from 'react-native';
 import { responsiveWidth, responsiveHeight, responsiveFontSize } from 'react-native-responsive-dimensions';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
-import FontAwesome from 'react-native-vector-icons/FontAwesome'
-import Ionicons from 'react-native-vector-icons/Ionicons'
-import AntDesign from 'react-native-vector-icons/AntDesign';
-import Entypo from 'react-native-vector-icons/Entypo';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Header, Avatar, colors } from 'react-native-elements';
+import Constants from 'expo-constants';
+import { Entypo,MaterialCommunityIcons } from '@expo/vector-icons';
 export default class Question4 extends Component {
 
     state = {
@@ -38,11 +35,61 @@ export default class Question4 extends Component {
         
     }
 
-    onPress = async (value) => {
+    onPress20 = async (value) => {
         try {
             await AsyncStorage.setItem('age', value)
+            await AsyncStorage.setItem('Eage', '20')
+           
+            //console.log("OKOIII",value)
+           //this.props.navigation.navigate("Question4Motion")
+            this.props.navigation.navigate("centerSplash")
+          
+        } catch (e) {
+            // saving error
+          }
+      };
+      onPress30 = async (value) => {
+        try {
+            await AsyncStorage.setItem('age', value)
+            await AsyncStorage.setItem('Eage', '30')
            //console.log("OKOIII",value)
-           this.props.navigation.navigate("Question4Motion")
+           this.props.navigation.navigate("centerSplash")
+          } catch (e) {
+            // saving error
+          }
+      };
+      onPress40 = async (value) => {
+        try {
+            await AsyncStorage.setItem('age', value)
+            await AsyncStorage.setItem('Eage', '40') 
+             this.props.navigation.navigate("centerSplash")
+          } catch (e) {
+            // saving error
+          }
+      };
+      onPress50 = async (value) => {
+        try {
+            await AsyncStorage.setItem('age', value)
+            await AsyncStorage.setItem('Eage', '50')
+           this.props.navigation.navigate("centerSplash")
+          } catch (e) {
+            // saving error
+          }
+      };
+      onPress60 = async (value) => {
+        try {
+            await AsyncStorage.setItem('age', value)
+            await AsyncStorage.setItem('Eage', '60')
+           this.props.navigation.navigate("centerSplash")
+          } catch (e) {
+            // saving error
+          }
+      };
+      onPress70 = async (value) => {
+        try {
+            await AsyncStorage.setItem('age', value)
+            await AsyncStorage.setItem('Eage', '70')
+           this.props.navigation.navigate("centerSplash")
           } catch (e) {
             // saving error
           }
@@ -53,20 +100,52 @@ export default class Question4 extends Component {
             <View
                 style={styles.container}>
                 <StatusBar backgroundColor="white" barStyle="light-content" translucent />
-
+                <Header
+              backgroundColor={'white'}
+              leftComponent={
+                <TouchableOpacity style={{
+                  alignContent: 'flex-start',
+                  justifyContent: 'flex-start',
+                  alignItems: 'flex-start'
+                }}
+                onPress={() => {
+                  this.props.navigation.goBack();
+              }}
+                >
+                  <Entypo name="arrow-long-left" size={40} color="black" />
+                </TouchableOpacity>
+              }
+             
+              rightComponent={
+                <TouchableOpacity style={{
+                  alignContent: 'flex-start',
+                  justifyContent: 'flex-start',
+                  alignItems: 'flex-start'
+                }}
+                onPress={() => {
+                  this.props.navigation.navigate("Home");
+              }}
+                >
+                  <MaterialCommunityIcons name="home-assistant" size={40} color="black" />
+                </TouchableOpacity>
+              }
+              statusBarProps={{ barStyle: 'light-content', translucent: true, backgroundColor: '#757575' }}
+              containerStyle={{ borderBottomColor: '#85106a', borderBottomWidth: 0, color: 'red' }}
+              style={{ backgroundColor: 'red', elevation: 5 }}
+            />
                 <View style={styles.textbuttonView}>
                 <Text style={styles.textbutton}>Your age?</Text>
                 </View>
                 <View style={styles.buttonView}>    
                 <TouchableOpacity      
                     style={styles.button}
-                    onPress={()=>this.onPress("3")}
+                    onPress={()=>this.onPress20("3")}
                 >
                     <Text style={styles.textbutton1}> 20's</Text> 
                 </TouchableOpacity>
                 <TouchableOpacity      
                     style={[styles.button, { marginLeft: 40 }]}
-                    onPress={()=>this.onPress("3")}
+                    onPress={()=>this.onPress30("3")}
                 >
                     <Text style={styles.textbutton1}> 30's</Text>
                 </TouchableOpacity>     
@@ -75,13 +154,13 @@ export default class Question4 extends Component {
                 <View style={styles.buttonView1}>    
                 <TouchableOpacity      
                     style={styles.button}
-                    onPress={()=>this.onPress("2")}
+                    onPress={()=>this.onPress40("2")}
                 >
                     <Text style={styles.textbutton1}> 40's</Text> 
                 </TouchableOpacity>
                 <TouchableOpacity      
                     style={[styles.button, { marginLeft: 40 }]}
-                    onPress={()=>this.onPress("1")}
+                    onPress={()=>this.onPress50("1")}
                 >
                     <Text style={styles.textbutton1}> 50's</Text>
                 </TouchableOpacity>     
@@ -90,13 +169,13 @@ export default class Question4 extends Component {
                 <View style={styles.buttonView2}>    
                 <TouchableOpacity      
                     style={styles.button}
-                    onPress={()=>this.onPress("0")}
+                    onPress={()=>this.onPress60("0")}
                 >
                     <Text style={styles.textbutton1}> 60's</Text> 
                 </TouchableOpacity>
                 <TouchableOpacity      
                     style={[styles.button, { marginLeft: 40 }]}
-                    onPress={()=>this.onPress("0")}
+                    onPress={()=>this.onPress70("0")}
                 >
                     <Text style={styles.textbutton1}> 70's</Text>
                 </TouchableOpacity>     
@@ -122,7 +201,7 @@ const styles = StyleSheet.create({
 
     },
     textbuttonView:{
-        marginVertical:100,   
+        marginVertical:70,   
         justifyContent:'center',
         alignContent:'center',
         alignItems:'center', 
@@ -134,15 +213,13 @@ const styles = StyleSheet.create({
         borderRadius: 7,
         width: 150,
         height: 70,
-       // marginTop: 50,
-        //borderWidth: 1,
         fontSize:20,
         textAlign: 'center',
         backgroundColor: "#143060",
     },
     textbutton: {
         color:'#9fcf3c',
-        fontSize: 35,
+        fontSize: responsiveFontSize(4),
         textAlign: 'center',
     },
     textbutton1: {

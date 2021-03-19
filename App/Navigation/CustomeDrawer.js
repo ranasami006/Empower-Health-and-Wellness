@@ -57,7 +57,7 @@ export default class CustomDrawer extends Component {
                 style={styles.iconBack}
               />
             </TouchableOpacity>
-            <View style={{ flexDirection: 'row',justifyContent:'flex-end',alignContent:"flex-end",alignItems:'flex-end' }}>
+            <View style={{ flexDirection: 'row', }}>
 
 
               <Image
@@ -68,7 +68,7 @@ export default class CustomDrawer extends Component {
           <View style={styles.bottomContainer}>
             <TouchableOpacity
               onPress={() => {
-                this.props.navigation.navigate('');
+                this.props.navigation.navigate("StartScreen")
               }}
               style={styles.tab}>
               <View style={{ flexDirection: 'row', alignItems: 'center' }}>
@@ -84,7 +84,7 @@ export default class CustomDrawer extends Component {
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => {
-                this.props.navigation.navigate('MyCards');
+                this.props.navigation.navigate("Enroll")
               }}
               style={styles.tab}>
               <View style={{ flexDirection: 'row', alignItems: 'center' }}>
@@ -100,7 +100,7 @@ export default class CustomDrawer extends Component {
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => {
-                this.props.navigation.navigate('MyCards');
+                this.props.navigation.navigate("Ourteam")
               }}
               style={styles.tab}>
               <View style={{ flexDirection: 'row', alignItems: 'center' }}>
@@ -116,7 +116,7 @@ export default class CustomDrawer extends Component {
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => {
-                this.props.navigation.navigate('MyCards');
+                this.props.navigation.navigate("Aboutus")
               }}
               style={styles.tab}>
               <View style={{ flexDirection: 'row', alignItems: 'center' }}>
@@ -157,10 +157,9 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: responsiveWidth(2),
   },
   image: {
-    height: responsiveHeight(5.5),
-    width: responsiveHeight(26.2),
-    marginHorizontal:responsiveWidth(3),
-    top: 5
+    height: responsiveHeight(4.6),
+    width: responsiveHeight(22),
+   top: 5
   },
 
   imageDrawer: {
@@ -176,12 +175,12 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: responsiveFontSize(1.3),
-    fontFamily: 'bold',
+    //fontFamily: 'bold',
     marginLeft: responsiveWidth(4),
   },
   text1: {
     fontSize: responsiveFontSize(2.5),
-    fontFamily: 'bold',
+    //fontFamily: 'bold',
     color: '#142F60',
     textAlign:'center',
   },

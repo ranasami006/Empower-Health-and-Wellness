@@ -2,13 +2,10 @@ import { StatusBar } from 'expo-status-bar';
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, SafeAreaView, Image, ImageBackground, TouchableOpacity, ScrollView, TextInput, FlatList, Alert } from 'react-native';
 import { responsiveWidth, responsiveHeight, responsiveFontSize } from 'react-native-responsive-dimensions';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
-import FontAwesome from 'react-native-vector-icons/FontAwesome'
-import Ionicons from 'react-native-vector-icons/Ionicons'
-import AntDesign from 'react-native-vector-icons/AntDesign';
-import Entypo from 'react-native-vector-icons/Entypo';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Header, Avatar, colors } from 'react-native-elements';
+import Constants from 'expo-constants';
+import { Entypo,MaterialCommunityIcons } from '@expo/vector-icons';
 export default class Question5 extends Component {
 
     state = {
@@ -53,17 +50,50 @@ export default class Question5 extends Component {
             <View
                 style={styles.container}>
                 <StatusBar backgroundColor="white" barStyle="light-content" translucent />
+                <Header
+              backgroundColor={'white'}
+              leftComponent={
+                <TouchableOpacity style={{
+                  alignContent: 'flex-start',
+                  justifyContent: 'flex-start',
+                  alignItems: 'flex-start'
+                }}
+                onPress={() => {
+                  this.props.navigation.goBack();
+              }}
+                >
+                  <Entypo name="arrow-long-left" size={40} color="black" />
+                </TouchableOpacity>
+              }
+             
+              rightComponent={
+                <TouchableOpacity style={{
+                  alignContent: 'flex-start',
+                  justifyContent: 'flex-start',
+                  alignItems: 'flex-start'
+                }}
+                onPress={() => {
+                  this.props.navigation.navigate("Home");
+              }}
+                >
+                  <MaterialCommunityIcons name="home-assistant" size={40} color="black" />
+                </TouchableOpacity>
+              }
+              statusBarProps={{ barStyle: 'light-content', translucent: true, backgroundColor: '#757575' }}
+              containerStyle={{ borderBottomColor: '#85106a', borderBottomWidth: 0, color: 'red' }}
+              style={{ backgroundColor: 'red', elevation: 5 }}
+            />
             <View style={styles.textbuttonView}>
                 <Text style={styles.textbutton}>What is motivating you to take this step?</Text>
              </View>
                
-              <View style={{flex:0,flexDirection:'column',marginVertical:-70,}}>
+              <View style={{flex:0,flexDirection:'column',marginVertical:0,}}>
                 <View style={[styles.buttonView1,{marginVertical: 10,}]}>
                     <TouchableOpacity
                         style={styles.button}
                         onPress={()=>this.onPress("1")}
                     >
-                        <Text style={styles.textbutton1}>Upcomming event like a vacation or a wedding</Text>
+                        <Text style={styles.textbutton1}>Upcomming event like a vacation or a wedding.</Text>
                     </TouchableOpacity>         
                 </View>
                 <View style={[styles.buttonView1,{marginVertical: 10,}]}>
@@ -72,7 +102,7 @@ export default class Question5 extends Component {
                         onPress={()=>this.onPress("3")}
 
                     >
-                        <Text style={styles.textbutton1}>I want to get healthier</Text>
+                        <Text style={styles.textbutton1}>I want to get healthier.</Text>
                     </TouchableOpacity>         
                 </View>
                  <View style={[styles.buttonView1,{marginVertical: 10,}]}>
@@ -80,7 +110,7 @@ export default class Question5 extends Component {
                         style={styles.button}
                         onPress={()=>this.onPress("2")}
                         >
-                        <Text style={styles.textbutton1}>I am tired of my body image</Text>
+                        <Text style={styles.textbutton1}>I am tired of my body image.</Text>
                     </TouchableOpacity>         
                 </View>
                 <View style={[styles.buttonView1,{marginVertical: 10,}]}>
@@ -88,7 +118,7 @@ export default class Question5 extends Component {
                         style={styles.button}
                         onPress={()=>this.onPress("1")}
                         >
-                        <Text style={styles.textbutton1}>I am simply not happy</Text>
+                        <Text style={styles.textbutton1}>I am simply not happy.</Text>
                     </TouchableOpacity>         
                 </View>
                 <View style={[styles.buttonView1,{marginVertical: 10,}]}>
@@ -96,7 +126,7 @@ export default class Question5 extends Component {
                         style={styles.button}
                         onPress={()=>this.onPress("3")}
                         >
-                        <Text style={styles.textbutton1}>I am getting older and its time for change</Text>
+                        <Text style={styles.textbutton1}>I am getting older and its time for change.</Text>
                     </TouchableOpacity>         
                 </View> 
             </View>
@@ -121,10 +151,10 @@ const styles = StyleSheet.create({
     button: {
         //alignItems: "center",
         justifyContent: 'center',
-        padding: 10,
+        padding: 5,
         borderRadius: 7,
         width: 340,
-        height: 55,
+        height: 67,
         fontSize:20,
         textAlign: 'center',
         backgroundColor: "#143060"
@@ -138,11 +168,11 @@ const styles = StyleSheet.create({
     },
     textbutton: {
         color:'#9fcf3c',
-        fontSize: 25,
+        fontSize: responsiveFontSize(4),
         textAlign: 'center',
     },
     textbuttonView:{
-    marginVertical:70, 
+    marginVertical:0, 
     justifyContent:'center',
     width:330,
     alignItems:'center',
